@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Advanced AI Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Floating Facial Recognition Button -->
+    <button class="emotion-toggle-btn" id="emotionToggleBtn" title="Click to activate facial recognition and let me read your emotions! 😊">
+        📹
+    </button>
+
+    <!-- Pet Selection Screen -->
+    <div class="pet-selection-overlay" id="petSelectionOverlay">
+        <div class="pet-selection-container">
+            <h1>✨ Nexus ✨</h1>
+            <p>Choose Your AI Companion</p>
+            <div class="pet-options" id="petOptions">
+                <!-- Pets will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Container -->
+    <div class="container" id="mainContainer" style="display:none;">
+        
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1 id="petTitle">Nexus</h1>
+                <p class="subtitle">Advanced AI Virtual Companion</p>
+            </div>
+        </div>
+
+        <!-- Emotion Detection Camera Panel -->
+        <div class="emotion-panel-backdrop" id="emotionPanelBackdrop" style="display:none;"></div>
+        <div class="emotion-detection-panel" id="emotionPanel" style="display:none;">
+            <div class="camera-container">
+                <video id="emotionCamera" autoplay playsinline muted></video>
+                <canvas id="emotionCanvas" style="display:none;"></canvas>
+                <div class="emotion-display" id="emotionDisplay">
+                    <div class="detected-emotion" id="detectedEmotion">No face detected</div>
+                    <div class="emotion-confidence" id="emotionConfidence"></div>
+                </div>
+                <button class="close-camera-btn" id="closeCameraBtn">✕ Close Camera</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            
+            <!-- Pet Display Area -->
+            <div class="pet-area">
+                <!-- Pet Container -->
+                <div class="pet-container">
+                    <div class="pet" id="pet">
+                        <!-- Pet SVG loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Mood Indicator -->
+                <div class="mood-indicator" id="moodIndicator">
+                    <span id="moodText">Happy</span>
+                    <span class="user-emotion-badge" id="userEmotionBadge" style="display:none;"></span>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats-section">
+                    <div class="stat">
+                        <div class="stat-label">Happiness</div>
+                        <div class="stat-bar">
+                            <div class="stat-fill happiness-fill" id="happinessFill"></div>
+                        </div>
+                        <span class="stat-value" id="happinessValue">75</span>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-label">Hunger</div>
+                        <div class="stat-bar">
+                            <div class="stat-fill hunger-fill" id="hungerFill"></div>
+                        </div>
+                        <span class="stat-value" id="hungerValue">30</span>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-label">Affection</div>
+                        <div class="stat-bar">
+                            <div class="stat-fill affection-fill" id="affectionFill"></div>
+                        </div>
+                        <span class="stat-value" id="affectionValue">60</span>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-label">Energy</div>
+                        <div class="stat-bar">
+                            <div class="stat-fill energy-fill" id="energyFill"></div>
+                        </div>
+                        <span class="stat-value" id="energyValue">80</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interaction Panel -->
+            <div class="interaction-panel">
+                
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn pet-btn" id="petBtn">🤚 Pet</button>
+                    <button class="action-btn feed-btn" id="feedMenuBtn">🍽️ Feed</button>
+                    <button class="action-btn reset-btn" id="resetBtn">↺ Switch</button>
+                </div>
+
+                <!-- Food Menu -->
+                <div class="food-menu" id="foodMenu" style="display:none;">
+                    <h3>🍖 Select a meal:</h3>
+                    <div class="food-options" id="foodOptions">
+                        <!-- Food options loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Chat Interface -->
+                <div class="chat-interface">
+                    <div class="chat-bubble-container" id="chatContainer">
+                        <!-- Chat messages loaded here -->
+                    </div>
+
+                    <div class="input-section">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="chat-input" 
+                            placeholder="Ask me anything..." 
+                            autocomplete="off"
+                        >
+                        <button class="send-btn" id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
